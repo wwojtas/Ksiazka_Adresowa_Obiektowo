@@ -8,8 +8,6 @@ string MetodyPomocnicze::konwerjsaIntNaString(int liczba)
     return str;
 }
 
-/** WPROWADZONE ZMIANY ***/
-
 string MetodyPomocnicze::wczytajLinie()
 {
     string wejscie = "";
@@ -47,3 +45,13 @@ int MetodyPomocnicze::konwersjaStringNaInt(string liczba)
 
     return liczbaInt;
 }
+
+bool MetodyPomocnicze::czyPlikJestPusty() {
+    fstream plikTekstowy;
+    plikTekstowy.seekg(0, ios::end);
+    if (plikTekstowy.tellg() == 0)
+        return true;
+    else
+        return false;
+}
+

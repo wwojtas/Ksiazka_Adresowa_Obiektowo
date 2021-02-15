@@ -2,11 +2,12 @@
 
 //settery
 void Adresat::ustawIdAdresata(int noweId) {
-    if(noweId >= 0) id = noweId;
+    if(noweId >= 0)
+        id = noweId;
 }
 
 void Adresat::ustawIdUzytkownika(int noweIdUzytkownika) {
-    idUzytkownika = noweIdUzytkownika;
+   idUzytkownika = noweIdUzytkownika;
 }
 
 void Adresat::ustawImie(string noweImie) {

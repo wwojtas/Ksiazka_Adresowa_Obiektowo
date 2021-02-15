@@ -1,27 +1,30 @@
 #include "AdresatMenedzer.h"
 
 
-int AdresatMenedzer::dodajAdresata() {
-    Adresat adresat;
+void AdresatMenedzer::dodajAdresata() {
 
+    Adresat adresat;
     system("cls");
-    cout << " >>> DODAWANIE NOWEGO ADRESATA <<<" << endl << endl;
+    cout << " >>> DODAWANIE NOWEGO ADRESATA <<< \n\n";
     adresat = podajDaneNowegoAdresata();
 
     adresaci.push_back(adresat);
-    dopiszAdresataDoPliku();
 
-    return ++idOstatniegoAdresata;
+    if (plikZAdresatami.dopiszAdresataDoPliku(adresat))
+        cout << "Nowy adresat zostal dodany \n";
+    else
+        cout << "Blad. Nie udalo sie dodac nowego adresata do pliku. \n";
+    system("pause");
 }
 
-void AdresatMenedzer::wyswietlWszystkichAdresatow() {
+void AdresatMenedzer::wyswietlWszystkichAdresatow(Adresat adresat) {
 
     system("cls");
     if (!adresaci.empty()) {
         cout << "             >>> ADRESACI <<<" << endl;
         cout << "-----------------------------------------------" << endl;
         for (vector <Adresat> :: iterator itr = adresaci.begin(); itr != adresaci.end(); itr++) {
-            wyswietlDaneAdresata();
+            wyswietlDaneAdresata(adresat);
         }
         cout << endl;
     } else {
@@ -31,10 +34,11 @@ void AdresatMenedzer::wyswietlWszystkichAdresatow() {
 }
 
 Adresat AdresatMenedzer::podajDaneNowegoAdresata() {
+
     Adresat adresat;
 
-    adresat.ustawIdAdresata(++idOstatniegoAdresata);
-    adresat.ustawIdUzytkownika(idZalogowanegoUzytkownika);
+    adresat.ustawIdAdresata((plikZAdresatami.pobierzIdOstatniegoAdresata() + 1) );
+    adresat.ustawIdUzytkownika(ID_ZALOGOWANEGO_UZYTKOWNIKA);
 
     cout << "Podaj imie: ";
     adresat.ustawImie(metodyPomocnicze.zamienPierwszaLitereNaDuzaAPozostaleNaMale(metodyPomocnicze.wczytajLinie()));
@@ -54,29 +58,9 @@ Adresat AdresatMenedzer::podajDaneNowegoAdresata() {
     return adresat;
 }
 
-void AdresatMenedzer::dopiszAdresataDoPliku() {
-    Adresat adresat;
-    string liniaZDanymiAdresata = "";
-    fstream plikTekstowy;
-    plikTekstowy.open(nazwaPlikuZAdresatami.c_str(), ios::out | ios::app);
 
-    if (plikTekstowy.good() == true) {
-        liniaZDanymiAdresata = plikZAdresatami.zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(adresat);
-
-        if (plikZAdresatami.czyPlikJestPusty() == true) {
-            plikTekstowy << liniaZDanymiAdresata;
-        } else {
-            plikTekstowy << endl << liniaZDanymiAdresata ;
-        }
-    } else {
-        cout << "Nie udalo sie otworzyc pliku i zapisac w nim danych." << endl;
-    }
-    plikTekstowy.close();
-    system("pause");
-}
-
-void AdresatMenedzer::wyswietlDaneAdresata() {
-    cout << "Id:         "         << adresat.pobierzIdAdresata() << endl;
+void AdresatMenedzer::wyswietlDaneAdresata(Adresat adresat) {
+    cout << "Id:                 " << adresat.pobierzIdAdresata() << endl;
     cout << "Imie:               " << adresat.pobierzImie() << endl;
     cout << "Nazwisko:           " << adresat.pobierzNazwisko() << endl;
     cout << "Numer telefonu:     " << adresat.pobierzNumerTelefonu() << endl;
@@ -84,6 +68,3 @@ void AdresatMenedzer::wyswietlDaneAdresata() {
     cout << "Adres:              " << adresat.pobierzAdres() << endl;
 }
 
-int AdresatMenedzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku() {
-    idOstatniegoAdresata = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku();
-}

@@ -7,7 +7,6 @@
 #include <cstdlib>
 
 #include "Adresat.h"
-#include "Uzytkownik.h"
 #include "MetodyPomocnicze.h"
 #include "PlikZUzytkownikami.h"
 
@@ -15,23 +14,36 @@ using namespace std;
 
 class PlikZAdresatami {
 
-    const string nazwaPlikuZAdresatami;
-    vector <Adresat> adresaci;
+    const string NAZWA_PLIKU_Z_ADRESATAMI;
+
+    int idOstatniegoAdresata;
     int idZalogowanegoUzytkownika;
-    bool czyPlikJestPusty();
+
+    string zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat adresat);
+    int pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
+    Adresat pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami);
+    int pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
+
+
     MetodyPomocnicze metodyPomocnicze;
-    PlikZUzytkownikami plikZUzytkownikami;
+
 
 public:
 
-    PlikZAdresatami(string NAZWAPLIKUZADRESATAMI)   : nazwaPlikuZAdresatami(NAZWAPLIKUZADRESATAMI) {};
-    int wczytajAdresatowZalogowanegoUzytkownikaZPliku();
+    PlikZAdresatami(string nazwaPlikuZAdresatami): NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami)
+    {
+        idOstatniegoAdresata = 0;
+    };
 
-    int pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
-    Adresat pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami);
-    int pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
+    vector <Adresat> wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
+    bool dopiszAdresataDoPliku(  Adresat adresat);
+    int pobierzIdOstatniegoAdresata();
 
-    string zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat adresat);
+
+
+
+
+
 };
 
 #endif
