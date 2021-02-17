@@ -10,6 +10,7 @@ using namespace std;
 class PlikTestowy {
 
 public:
+
     string nazwaPlikuTestowego;
     bool czyPlikJestPusty(string);
 

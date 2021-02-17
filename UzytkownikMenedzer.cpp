@@ -3,11 +3,8 @@
 void UzytkownikMenedzer::rejestracjaUzytkownika() {
 
     Uzytkownik uzytkownik = podajDaneNowegoUzytkownika();
-
     uzytkownicy.push_back(uzytkownik);
-
     plikZUzytkownikami.dopiszUzytkownikaDoPliku(uzytkownik);
-
     cout << "Konto zalozono pomyslnie" << endl << endl;
     system("pause");
 }
@@ -15,9 +12,7 @@ void UzytkownikMenedzer::rejestracjaUzytkownika() {
 Uzytkownik UzytkownikMenedzer::podajDaneNowegoUzytkownika() {
 
     Uzytkownik uzytkownik;
-
     uzytkownik.ustawId(pobierzIdNowegoUzytkownika());
-
     string login, haslo;
     do {
         cout << endl << "Podaj login: ";
@@ -34,6 +29,7 @@ Uzytkownik UzytkownikMenedzer::podajDaneNowegoUzytkownika() {
 }
 
 int UzytkownikMenedzer::pobierzIdNowegoUzytkownika() {
+
     if ( uzytkownicy.empty() == true )
         return 1;
     else
@@ -63,7 +59,6 @@ void UzytkownikMenedzer::wypiszWszystkichUzytkownikow() {
 
 
 int UzytkownikMenedzer::logowanieUzytkownika() {
-
 
     string login = "", haslo = "";
     cout << "MENU LOGOWANIA \n";
@@ -98,7 +93,6 @@ int UzytkownikMenedzer::logowanieUzytkownika() {
 
 void UzytkownikMenedzer::zmianaHaslaZalogowanegoUzytkownika() {
 
-
     string noweHaslo = "";
     cout << "Podaj nowe haslo: ";
     noweHaslo = metodyPomocnicze.wczytajLinie();
@@ -113,30 +107,21 @@ void UzytkownikMenedzer::zmianaHaslaZalogowanegoUzytkownika() {
 
 }
 
-
 int UzytkownikMenedzer::wylogowanieUzytkownika() {
 
     idZalogowanegoUzytkownika = 0;
-
     return idZalogowanegoUzytkownika;
-
 }
 
-bool UzytkownikMenedzer::czyUzytkownikJestZalogowany()
-{
+bool UzytkownikMenedzer::czyUzytkownikJestZalogowany() {
+
     if (idZalogowanegoUzytkownika > 0) return true;
     else return false;
 }
 
 
-int UzytkownikMenedzer::pobierzIdZalogowanegoUzytkownika()
-{
+int UzytkownikMenedzer::pobierzIdZalogowanegoUzytkownika() {
+
     return idZalogowanegoUzytkownika;
-}
-
-void UzytkownikMenedzer::ustawIdZalogowanegoUzytkownika(int noweIdZalogowanegoUzytkownika) {
-
-    if(noweIdZalogowanegoUzytkownika >= 0)
-    idZalogowanegoUzytkownika = noweIdZalogowanegoUzytkownika;
 }
 

@@ -15,8 +15,9 @@ using namespace std;
 
 class PlikZAdresatami {
 
+    MetodyPomocnicze metodyPomocnicze;
+    PlikTestowy plikTestowy;
     const string NAZWA_PLIKU_Z_ADRESATAMI;
-
     int idOstatniegoAdresata;
     int idZalogowanegoUzytkownika;
 
@@ -25,22 +26,14 @@ class PlikZAdresatami {
     Adresat pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami);
     int pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
 
-    MetodyPomocnicze metodyPomocnicze;
-    PlikTestowy plikTestowy;
-
 public:
 
-    PlikZAdresatami(string nazwaPlikuZAdresatami): NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami)
-    {
+    PlikZAdresatami(string nazwaPlikuZAdresatami): NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami) {
         idOstatniegoAdresata = 0;
     };
-
     vector <Adresat> wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
-    bool dopiszAdresataDoPliku(  Adresat adresat);
+    bool dopiszAdresataDoPliku( Adresat adresat);
     int pobierzIdOstatniegoAdresata();
-    int pobierzZPlikuIdOstatniegoAdresata();
-
-    void ustawIdOstatniegoAdresata(int noweIdOstatniegoAdresata);
 };
 
 #endif

@@ -1,11 +1,10 @@
 #include "Menu.h"
 
-char Menu::wybierzOpcjeZMenuGlownego()
-{
+char Menu::wybierzOpcjeZMenuGlownego() {
     char wybor;
 
     system("cls");
-    cout << "    >>> MENU  GLOWNE <<<" << endl;
+    cout << "===== MENU  GLOWNE =====" << endl;
     cout << "---------------------------" << endl;
     cout << "1. Rejestracja" << endl;
     cout << "2. Logowanie" << endl;
@@ -17,12 +16,11 @@ char Menu::wybierzOpcjeZMenuGlownego()
     return wybor;
 }
 
-char Menu::wybierzOpcjeZMenuUzytkownika()
-{
+char Menu::wybierzOpcjeZMenuUzytkownika() {
     char wybor;
 
     system("cls");
-    cout << " >>> MENU UZYTKOWNIKA <<<" << endl;
+    cout << "===== MENU UZYTKOWNIKA =====" << endl;
     cout << "---------------------------" << endl;
     cout << "1. Dodaj adresata" << endl;
     cout << "2. Wyszukaj po imieniu" << endl;

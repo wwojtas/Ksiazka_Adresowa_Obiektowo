@@ -7,7 +7,6 @@ void AdresatMenedzer::dodajAdresata() {
     system("cls");
     cout << " >>> DODAWANIE NOWEGO ADRESATA <<< \n\n";
     adresat = podajDaneNowegoAdresata();
-
     adresaci.push_back(adresat);
 
     if (plikZAdresatami.dopiszAdresataDoPliku(adresat))
@@ -21,8 +20,10 @@ void AdresatMenedzer::wyswietlWszystkichAdresatow() {
 
     system("cls");
     if (!adresaci.empty()) {
-        cout << "             >>> ADRESACI <<<" << endl;
-        cout << "-----------------------------------------------" << endl;
+        cout << "  ================ ADRESACI ================" << endl;
+        cout << "                     ***                    " << endl;
+        cout << "                      *                     " << endl;
+        cout << "                     ***                    " << endl;
         for (vector <Adresat> :: iterator itr = adresaci.begin(); itr != adresaci.end(); itr++) {
             wyswietlDaneAdresata(*itr);
         }
@@ -69,14 +70,7 @@ void AdresatMenedzer::wyswietlDaneAdresata(Adresat adresat) {
 
 }
 
-int AdresatMenedzer::pobierzZPlikuIdOstatniegoAdresata()
-{
-    plikZAdresatami.pobierzZPlikuIdOstatniegoAdresata();
+int AdresatMenedzer::pobierzIdOstatniegoAdresata() {
+    plikZAdresatami.pobierzIdOstatniegoAdresata();
 }
-
-void AdresatMenedzer::ustawIdOstatniegoAdresata(int noweIdOstatniegoAdresata)
-{
-    plikZAdresatami.ustawIdOstatniegoAdresata(noweIdOstatniegoAdresata);
-}
-
 

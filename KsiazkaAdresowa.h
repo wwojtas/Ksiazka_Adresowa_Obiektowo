@@ -27,23 +27,18 @@ public:
         delete adresatMenedzer;
         adresatMenedzer = NULL;
     }
-
     void rejestracjaUzytkownika();
     void wypiszWszystkichUzytkownikow();
-    int logowanieUzytkownika();
+    void logowanieUzytkownika();
     void zmianaHaslaZalogowanegoUzytkownika();
     int wylogowanieUzytkownika();
     void dodajAdresata();
     void wyswietlWszystkichAdresatow();
     int pobierzIdZalogowanegoUzytkownika();
-    void ustawIdZalogowanegoUzytkownika(int noweIdZalogowanegoUzytkownika);
-    int pobierzZPlikuIdOstatniegoAdresata();
-    void ustawIdOstatniegoAdresata(int noweIdOstatniegoAdresata);
+    int pobierzIdOstatniegoAdresata();
 
     char wybierzOpcjeZMenuGlownego();
     char wybierzOpcjeZMenuUzytkownika();
-
-
 };
 
 #endif

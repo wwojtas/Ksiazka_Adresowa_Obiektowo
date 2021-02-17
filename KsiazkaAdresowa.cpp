@@ -8,16 +8,16 @@ void KsiazkaAdresowa::wypiszWszystkichUzytkownikow() {
     uzytkownikMenedzer.wypiszWszystkichUzytkownikow();
 }
 
-int KsiazkaAdresowa::logowanieUzytkownika() {
+void KsiazkaAdresowa::logowanieUzytkownika() {
 
     uzytkownikMenedzer.logowanieUzytkownika();
-
     if(uzytkownikMenedzer.czyUzytkownikJestZalogowany()) {
         adresatMenedzer = new AdresatMenedzer(NAZWA_PLIKU_Z_ADRESATAMI, uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
     }
 }
 
 int KsiazkaAdresowa::wylogowanieUzytkownika() {
+
     uzytkownikMenedzer.wylogowanieUzytkownika();
     delete adresatMenedzer;
     adresatMenedzer = NULL;
@@ -28,6 +28,7 @@ void KsiazkaAdresowa::zmianaHaslaZalogowanegoUzytkownika() {
 }
 
 void KsiazkaAdresowa::dodajAdresata() {
+
     if(uzytkownikMenedzer.czyUzytkownikJestZalogowany() == true) {
         adresatMenedzer -> dodajAdresata();
     } else {
@@ -44,17 +45,12 @@ void KsiazkaAdresowa::wyswietlWszystkichAdresatow() {
         cout << "Aby wyswietlic kontakty, musisz sie zalogowac ! \n";
         system("pause");
     }
-
 }
 
 int KsiazkaAdresowa::pobierzIdZalogowanegoUzytkownika() {
     uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika();
 }
 
-void KsiazkaAdresowa::ustawIdZalogowanegoUzytkownika(int noweIdZalogowanegoUzytkownika) {
-
-    uzytkownikMenedzer.ustawIdZalogowanegoUzytkownika(noweIdZalogowanegoUzytkownika);
-}
 
 char KsiazkaAdresowa::wybierzOpcjeZMenuGlownego() {
     menu.wybierzOpcjeZMenuGlownego();
@@ -64,10 +60,7 @@ char KsiazkaAdresowa::wybierzOpcjeZMenuUzytkownika() {
     menu.wybierzOpcjeZMenuUzytkownika();
 }
 
-int KsiazkaAdresowa::pobierzZPlikuIdOstatniegoAdresata() {
-    adresatMenedzer -> pobierzZPlikuIdOstatniegoAdresata();
+int KsiazkaAdresowa::pobierzIdOstatniegoAdresata() {
+    adresatMenedzer -> pobierzIdOstatniegoAdresata();
 }
 
-void KsiazkaAdresowa::ustawIdOstatniegoAdresata(int noweIdOstatniegoAdresata) {
-    adresatMenedzer -> ustawIdOstatniegoAdresata(noweIdOstatniegoAdresata);
-}

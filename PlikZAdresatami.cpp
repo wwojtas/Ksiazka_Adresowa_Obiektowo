@@ -108,61 +108,43 @@ bool PlikZAdresatami::dopiszAdresataDoPliku(  Adresat adresat ) {
     fstream plikTekstowy;
     plikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::out | ios::app);
 
-    if (plikTekstowy.good() == true)
-    {
+    if (plikTekstowy.good() == true) {
         liniaZDanymiAdresata = zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(adresat);
 
-        if (plikTestowy.czyPlikJestPusty(NAZWA_PLIKU_Z_ADRESATAMI) == true)
-        {
+        if (plikTestowy.czyPlikJestPusty(NAZWA_PLIKU_Z_ADRESATAMI) == true) {
             plikTekstowy << liniaZDanymiAdresata;
-        }
-        else
-        {
+        } else {
             plikTekstowy << endl << liniaZDanymiAdresata ;
         }
         idOstatniegoAdresata++;
         plikTekstowy.close();
         return true;
         system("pause");
-    }
-    else
-    {
+    } else {
         cout << "Nie udalo sie otworzyc pliku i zapisac w nim danych." << endl;
         return false;
         system("pause");
     }
 }
 
-int PlikZAdresatami::pobierzZPlikuIdOstatniegoAdresata()
-{
+int PlikZAdresatami::pobierzIdOstatniegoAdresata() {
+
     int idOstatniegoAdresata = 0;
     string daneJednegoAdresataOddzielonePionowymiKreskami = "";
     string daneOstaniegoAdresataWPliku = "";
     fstream plikTekstowy;
-    plikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::in);
+    plikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI, ios::in);
 
-    if (plikTekstowy.good() == true)
-    {
+    if (plikTekstowy.good() == true) {
         while (getline(plikTekstowy, daneJednegoAdresataOddzielonePionowymiKreskami)) {}
-            daneOstaniegoAdresataWPliku = daneJednegoAdresataOddzielonePionowymiKreskami;
-            plikTekstowy.close();
-    }
-    else
+        daneOstaniegoAdresataWPliku = daneJednegoAdresataOddzielonePionowymiKreskami;
+        plikTekstowy.close();
+    } else
         cout << "Nie udalo sie otworzyc pliku i wczytac danych." << endl;
 
-    if (daneOstaniegoAdresataWPliku != "")
-    {
+    if (daneOstaniegoAdresataWPliku != "") {
         idOstatniegoAdresata = pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(daneOstaniegoAdresataWPliku);
     }
     return idOstatniegoAdresata;
 }
 
-int PlikZAdresatami::pobierzIdOstatniegoAdresata()
-{
-    return idOstatniegoAdresata;
-}
-
-void PlikZAdresatami::ustawIdOstatniegoAdresata(int noweIdOstatniegoAdresata) {
-
-    idOstatniegoAdresata = noweIdOstatniegoAdresata;
-}
