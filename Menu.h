@@ -11,6 +11,7 @@ class Menu {
 public:
 
     MetodyPomocnicze metodyPomocnicze;
+
     char wybierzOpcjeZMenuGlownego();
     char wybierzOpcjeZMenuUzytkownika();
 };
