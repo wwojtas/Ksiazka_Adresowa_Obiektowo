@@ -20,6 +20,7 @@ class UzytkownikMenedzer {
     PlikZUzytkownikami plikZUzytkownikami;
     MetodyPomocnicze metodyPomocnicze;
 
+
     Uzytkownik podajDaneNowegoUzytkownika();
     int pobierzIdNowegoUzytkownika();
     bool czyIstniejeLogin(string login);
@@ -38,7 +39,9 @@ public:
     int wylogowanieUzytkownika();
     bool czyUzytkownikJestZalogowany();
     int pobierzIdZalogowanegoUzytkownika();
+    void ustawIdZalogowanegoUzytkownika(int noweIdZalogowanegoUzytkownika);
 
 };
+
 
 #endif

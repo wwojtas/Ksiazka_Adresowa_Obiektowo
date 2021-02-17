@@ -3,13 +3,13 @@
 //settery
 void Uzytkownik::ustawId(int noweId) {
     if(noweId >= 0)
-    this -> id = noweId;
+    id = noweId;
 }
 void Uzytkownik::ustawlogin(string nowyLogin) {
-    this -> login = nowyLogin;
+    login = nowyLogin;
 }
 void Uzytkownik::ustawHaslo(string noweHaslo) {
-    this -> haslo = noweHaslo;
+    haslo = noweHaslo;
 }
 
 //gettery

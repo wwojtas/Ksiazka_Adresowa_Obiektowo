@@ -18,7 +18,7 @@ public:
     int konwersjaStringNaInt(string liczba);
 
     string wczytajLinie();
-    bool czyPlikJestPusty();
+    char wczytajZnak();
 
 };
 
