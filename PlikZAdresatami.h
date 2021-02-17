@@ -9,6 +9,7 @@
 #include "Adresat.h"
 #include "MetodyPomocnicze.h"
 #include "PlikZUzytkownikami.h"
+#include "PlikTestowy.h"
 
 using namespace std;
 
@@ -24,9 +25,8 @@ class PlikZAdresatami {
     Adresat pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami);
     int pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
 
-
     MetodyPomocnicze metodyPomocnicze;
-
+    PlikTestowy plikTestowy;
 
 public:
 
@@ -38,12 +38,9 @@ public:
     vector <Adresat> wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
     bool dopiszAdresataDoPliku(  Adresat adresat);
     int pobierzIdOstatniegoAdresata();
+    int pobierzZPlikuIdOstatniegoAdresata();
 
-
-
-
-
-
+    void ustawIdOstatniegoAdresata(int noweIdOstatniegoAdresata);
 };
 
 #endif

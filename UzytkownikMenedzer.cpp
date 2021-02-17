@@ -102,16 +102,15 @@ void UzytkownikMenedzer::zmianaHaslaZalogowanegoUzytkownika() {
     string noweHaslo = "";
     cout << "Podaj nowe haslo: ";
     noweHaslo = metodyPomocnicze.wczytajLinie();
-
     for ( int i = 0; i < uzytkownicy.size(); i++ ) {
-
         if ( uzytkownicy[i].pobierzId() == idZalogowanegoUzytkownika ) {
-            uzytkownicy[i].pobierzHaslo() =  noweHaslo;
+            uzytkownicy[i].ustawHaslo(noweHaslo);
             cout << "Haslo zostalo zmienione." << endl << endl;
             system("pause");
         }
     }
     plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
+
 }
 
 
@@ -133,5 +132,11 @@ bool UzytkownikMenedzer::czyUzytkownikJestZalogowany()
 int UzytkownikMenedzer::pobierzIdZalogowanegoUzytkownika()
 {
     return idZalogowanegoUzytkownika;
+}
+
+void UzytkownikMenedzer::ustawIdZalogowanegoUzytkownika(int noweIdZalogowanegoUzytkownika) {
+
+    if(noweIdZalogowanegoUzytkownika >= 0)
+    idZalogowanegoUzytkownika = noweIdZalogowanegoUzytkownika;
 }
 
