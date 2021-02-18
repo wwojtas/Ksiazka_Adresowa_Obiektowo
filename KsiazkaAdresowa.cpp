@@ -16,7 +16,7 @@ void KsiazkaAdresowa::logowanieUzytkownika() {
     }
 }
 
-int KsiazkaAdresowa::wylogowanieUzytkownika() {
+void KsiazkaAdresowa::wylogowanieUzytkownika() {
 
     uzytkownikMenedzer.wylogowanieUzytkownika();
     delete adresatMenedzer;
@@ -35,7 +35,6 @@ void KsiazkaAdresowa::dodajAdresata() {
         cout << "Aby dodac kontakt, musisz sie zalogowac ! \n";
         system("pause");
     }
-
 }
 
 void KsiazkaAdresowa::wyswietlWszystkichAdresatow() {
@@ -63,4 +62,13 @@ char KsiazkaAdresowa::wybierzOpcjeZMenuUzytkownika() {
 int KsiazkaAdresowa::pobierzIdOstatniegoAdresata() {
     adresatMenedzer -> pobierzIdOstatniegoAdresata();
 }
+
+void KsiazkaAdresowa::wyszukajAdresatowPoImieniu() {
+    adresatMenedzer -> wyszukajAdresatowPoImieniu();
+}
+
+void KsiazkaAdresowa::wyszukajAdresatowPoNazwisku() {
+    adresatMenedzer -> wyszukajAdresatowPoNazwisku();
+}
+
 
