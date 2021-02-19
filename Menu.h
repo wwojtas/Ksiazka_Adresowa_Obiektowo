@@ -2,6 +2,8 @@
 #define MENU_H
 
 #include <iostream>
+#include <windows.h>
+
 #include "MetodyPomocnicze.h"
 
 using namespace std;
@@ -14,6 +16,7 @@ public:
 
     char wybierzOpcjeZMenuGlownego();
     char wybierzOpcjeZMenuUzytkownika();
+    void czyscEkran();
 };
 
 #endif

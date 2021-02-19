@@ -11,12 +11,13 @@ using namespace std;
 
 int main() {
 
-    KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt", "Adresaci.txt");
+    KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt", "Adresaci.txt", "Adresaci_plik_tymczasowy.txt");
 
     char wybor;
 
     while (true) {
         if (ksiazkaAdresowa.pobierzIdZalogowanegoUzytkownika() == 0) {
+
             wybor = ksiazkaAdresowa.wybierzOpcjeZMenuGlownego();
 
             switch (wybor) {
@@ -53,8 +54,8 @@ int main() {
                 ksiazkaAdresowa.wyswietlWszystkichAdresatow();
                 break;
             case '5':
-                //  idUsunietegoAdresata = usunAdresata(adresaci);
-                //   idOstatniegoAdresata = podajIdOstatniegoAdresataPoUsunieciuWybranegoAdresata(idUsunietegoAdresata, idOstatniegoAdresata);
+                ksiazkaAdresowa.usunAdresata();
+                ksiazkaAdresowa.pobierzIdOstatniegoAdresata();
                 break;
             case '6':
                 //  edytujAdresata(adresaci);

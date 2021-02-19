@@ -20,6 +20,8 @@ public:
     string pobierzLiczbe(string tekst, int pozycjaZnaku);
     string wczytajLinie();
 
+    int wczytajLiczbeCalkowita();
+
 };
 
 #endif
