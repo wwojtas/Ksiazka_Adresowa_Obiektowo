@@ -1,9 +1,10 @@
 #include "Menu.h"
 
 char Menu::wybierzOpcjeZMenuGlownego() {
+
     char wybor;
 
-    system("cls");
+    czyscEkran();
     cout << "===== MENU  GLOWNE =====" << endl;
     cout << "---------------------------" << endl;
     cout << "1. Rejestracja" << endl;
@@ -17,9 +18,10 @@ char Menu::wybierzOpcjeZMenuGlownego() {
 }
 
 char Menu::wybierzOpcjeZMenuUzytkownika() {
+
     char wybor;
 
-    system("cls");
+    czyscEkran();
     cout << "===== MENU UZYTKOWNIKA =====" << endl;
     cout << "---------------------------" << endl;
     cout << "1. Dodaj adresata" << endl;
@@ -36,4 +38,16 @@ char Menu::wybierzOpcjeZMenuUzytkownika() {
     wybor = metodyPomocnicze.wczytajZnak();
 
     return wybor;
+}
+
+void Menu::czyscEkran() {
+
+    HANDLE console = GetStdHandle( STD_OUTPUT_HANDLE );
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    GetConsoleScreenBufferInfo( console, & csbi );
+    DWORD tmp;
+    COORD start = { 0, 0 };
+    FillConsoleOutputCharacterA( console, ' ', csbi.dwSize.X * csbi.dwSize.Y, start, & tmp );
+    FillConsoleOutputAttribute( console, csbi.wAttributes, csbi.dwSize.X * csbi.dwSize.Y, start, & tmp );
+    SetConsoleCursorPosition( console, start );
 }

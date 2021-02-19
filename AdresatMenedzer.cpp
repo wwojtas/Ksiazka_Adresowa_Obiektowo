@@ -4,8 +4,8 @@
 void AdresatMenedzer::dodajAdresata() {
 
     Adresat adresat;
-    system("cls");
-    cout << " >>> DODAWANIE NOWEGO ADRESATA <<< \n\n";
+    menu.czyscEkran();
+    cout << " =========== DODAWANIE NOWEGO ADRESATA =========== \n\n";
     adresat = podajDaneNowegoAdresata();
     adresaci.push_back(adresat);
 
@@ -18,12 +18,12 @@ void AdresatMenedzer::dodajAdresata() {
 
 void AdresatMenedzer::wyswietlWszystkichAdresatow() {
 
-    system("cls");
+    menu.czyscEkran();
     if (!adresaci.empty()) {
-        cout << "  ============= ADRESACI ==============  " << endl;
-        cout << "                   ***                    " << endl;
-        cout << "                    *                     " << endl;
-        cout << "                   ***                    " << endl;
+        cout << "============= ADRESACI ==============  " << endl;
+        cout << "                ***                    " << endl;
+        cout << "                 *                     " << endl;
+        cout << "                ***                    " << endl;
         for (vector <Adresat> :: iterator itr = adresaci.begin(); itr != adresaci.end(); itr++) {
             wyswietlDaneAdresata(*itr);
         }
@@ -77,10 +77,14 @@ void AdresatMenedzer::pobierzIdOstatniegoAdresata() {
 
 void AdresatMenedzer::wyswietlIloscWyszukanychAdresatow() {
 
-    if (iloscAdresatow == 0)
+    if (pobierzIloscAdresatow() == 0)
         cout << endl << "W ksiazce adresowej nie ma adresatow z tymi danymi." << endl;
     else
-        cout << endl << "Ilosc adresatow w ksiazce adresowej wynosi: " << iloscAdresatow << endl << endl;
+        cout << endl << "Ilosc adresatow w ksiazce adresowej wynosi: " << pobierzIloscAdresatow() << endl << endl;
+}
+
+int AdresatMenedzer::pobierzIloscAdresatow() {
+    return iloscAdresatow;
 }
 
 void AdresatMenedzer::wyszukajAdresatowPoImieniu() {
@@ -88,7 +92,7 @@ void AdresatMenedzer::wyszukajAdresatowPoImieniu() {
     string imiePoszukiwanegoAdresata = "";
     int iloscAdresatow = 0;
 
-    system("cls");
+    menu.czyscEkran();
     if (!adresaci.empty()) {
         cout << "=========== WYSZUKIWANIE ADRESATOW O IMIENIU ===========" << endl << endl;
 
@@ -115,7 +119,7 @@ void AdresatMenedzer::wyszukajAdresatowPoNazwisku() {
     string nazwiskoPoszukiwanegoAdresata;
     int iloscAdresatow = 0;
 
-    system("cls");
+    menu.czyscEkran();
     if (!adresaci.empty()) {
         cout << "=========== WYSZUKIWANIE ADRESATOW O NAZWISKU ===========" << endl << endl;
 
@@ -136,3 +140,58 @@ void AdresatMenedzer::wyszukajAdresatowPoNazwisku() {
     cout << endl;
     system("pause");
 }
+
+int AdresatMenedzer::usunAdresata()
+{
+    int idUsuwanegoAdresata = 0;
+    menu.czyscEkran();
+    cout << " =========== USUWANIE WYBRANEGO ADRESATA =========== " << endl << endl;
+
+    idUsuwanegoAdresata = plikZAdresatami.podajIdWybranegoAdresata();
+
+    char znak;
+    bool czyIstniejeAdresat = false;
+
+    for (int i = 0; i < adresaci.size(); ++i)
+    {
+        if (adresaci[i].pobierzIdAdresata() == idUsuwanegoAdresata)
+        {
+            czyIstniejeAdresat = true;
+            cout << "Czy na pewno usunac ? " << endl;
+            cout << " =========== Adresat =========== " << endl;
+            cout << "Id:                 " << adresaci[i].pobierzIdAdresata() << endl;
+            cout << "Imie:               " << adresaci[i].pobierzImie() << endl;
+            cout << "Nazwisko:           " << adresaci[i].pobierzNazwisko() << endl;
+            cout << "Numer telefonu:     " << adresaci[i].pobierzNumerTelefonu() << endl;
+            cout << "Email:              " << adresaci[i].pobierzEmail() << endl;
+            cout << "Adres:              " << adresaci[i].pobierzAdres() << endl;
+
+            cout << endl << "Potwierdz naciskajac klawisz 't': ";
+            znak = metodyPomocnicze.wczytajZnak();
+
+            if (znak == 't')
+            {
+                plikZAdresatami.usunWybranegoAdresataZPliku(idUsuwanegoAdresata);
+                adresaci.erase(adresaci.begin() + i);
+                cout << endl << endl << "Szukany adresat zostal USUNIETY" << endl << endl;
+                system("pause");
+                return idUsuwanegoAdresata;
+            }
+            else
+            {
+                cout << endl << endl << "Wybrany adresat NIE zostal usuniety" << endl << endl;
+                system("pause");
+                return 0;
+            }
+        }
+    }
+    if (czyIstniejeAdresat == false)
+    {
+        cout << endl << "Nie ma takiego adresata w ksiazce adresowej" << endl << endl;
+        system("pause");
+    }
+    return 0;
+}
+
+
+
