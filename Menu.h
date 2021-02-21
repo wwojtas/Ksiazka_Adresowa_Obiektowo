@@ -12,11 +12,10 @@ class Menu {
 
 public:
 
-    MetodyPomocnicze metodyPomocnicze;
-
-    char wybierzOpcjeZMenuGlownego();
-    char wybierzOpcjeZMenuUzytkownika();
-    void czyscEkran();
+    static char wybierzOpcjeZMenuGlownego();
+    static char wybierzOpcjeZMenuUzytkownika();
+    static char wybierzOpcjeZMenuEdycja();
+    static void czyscEkran();
 };
 
 #endif

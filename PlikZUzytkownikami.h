@@ -12,11 +12,8 @@
 
 using namespace std;
 
-class PlikZUzytkownikami {
+class PlikZUzytkownikami :public PlikTestowy {
 
-    MetodyPomocnicze metodyPomocnicze;
-    PlikTestowy plikTestowy;
-    const string NAZWA_PLIKU_Z_UZYTKOWNIKAMI;
     vector <Uzytkownik> uzytkownicy;
 
     string zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(Uzytkownik uzytkownik);
@@ -24,8 +21,8 @@ class PlikZUzytkownikami {
 
 public:
 
-    PlikZUzytkownikami(string nazwaPlikuZUzytkownikami) : NAZWA_PLIKU_Z_UZYTKOWNIKAMI(nazwaPlikuZUzytkownikami) {
-
+    PlikZUzytkownikami(string nazwaPliku)
+        : PlikTestowy(nazwaPliku) {
     };
 
     vector <Uzytkownik> wczytajUzytkownikowZPliku();
