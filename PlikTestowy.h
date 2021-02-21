@@ -9,11 +9,15 @@ using namespace std;
 
 class PlikTestowy {
 
+    const string NAZWA_PLIKU;
+
 public:
 
-    string nazwaPlikuTestowego;
+    PlikTestowy(string nazwaPliku)
+        : NAZWA_PLIKU(nazwaPliku)
+    {}
+    string pobierzNazwePliku();
     bool czyPlikJestPusty(string);
-
 };
 
 #endif

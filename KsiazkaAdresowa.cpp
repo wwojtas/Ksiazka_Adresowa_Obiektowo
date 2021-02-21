@@ -1,10 +1,12 @@
 #include "KsiazkaAdresowa.h"
 
 void KsiazkaAdresowa::rejestracjaUzytkownika() {
+
     uzytkownikMenedzer.rejestracjaUzytkownika();
 }
 
 void KsiazkaAdresowa::wypiszWszystkichUzytkownikow() {
+
     uzytkownikMenedzer.wypiszWszystkichUzytkownikow();
 }
 
@@ -24,6 +26,7 @@ void KsiazkaAdresowa::wylogowanieUzytkownika() {
 }
 
 void KsiazkaAdresowa::zmianaHaslaZalogowanegoUzytkownika() {
+
     uzytkownikMenedzer.zmianaHaslaZalogowanegoUzytkownika();
 }
 
@@ -48,30 +51,42 @@ void KsiazkaAdresowa::wyswietlWszystkichAdresatow() {
 }
 
 int KsiazkaAdresowa::pobierzIdZalogowanegoUzytkownika() {
+
     uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika();
 }
 
 
 char KsiazkaAdresowa::wybierzOpcjeZMenuGlownego() {
-    menu.wybierzOpcjeZMenuGlownego();
+
+    Menu::wybierzOpcjeZMenuGlownego();
 }
 
 char KsiazkaAdresowa::wybierzOpcjeZMenuUzytkownika() {
-    menu.wybierzOpcjeZMenuUzytkownika();
+
+    Menu::wybierzOpcjeZMenuUzytkownika();
 }
 
 int KsiazkaAdresowa::pobierzIdOstatniegoAdresata() {
+
     adresatMenedzer -> pobierzIdOstatniegoAdresata();
 }
 
 void KsiazkaAdresowa::wyszukajAdresatowPoImieniu() {
+
     adresatMenedzer -> wyszukajAdresatowPoImieniu();
 }
 
 void KsiazkaAdresowa::wyszukajAdresatowPoNazwisku() {
+
     adresatMenedzer -> wyszukajAdresatowPoNazwisku();
 }
 
 void KsiazkaAdresowa::usunAdresata() {
+
     adresatMenedzer -> usunAdresata();
+}
+
+void KsiazkaAdresowa::edytujAdresata() {
+
+    adresatMenedzer -> edytujAdresata();
 }
